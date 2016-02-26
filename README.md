@@ -16,10 +16,11 @@ Gradle:
 
 配置AndriodManifest:
 ######权限配置
-`<uses-permission android:name="android.permission.INTERNET" />`
-`<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />`
-`<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />`
-
+```java
+<uses-permission android:name="android.permission.INTERNET" />
+<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+```
 ######配置Activity
 
 ```java
@@ -44,17 +45,15 @@ private void initImageLoader(Context context) {
             config.writeDebugLogs(); // Remove for release app
             // Initialize ImageLoader with configuration.
             ImageLoader.getInstance().init(config.build());
-        }```
-
-
+        }
+```
 ###Step-4
 
 ######在合适的地方使用，可参照simple
 
 你只需要封装一个包含大图url与小图url即可：
-
  ```java
-ArrayList<PicUrlBean> picUrlList = new ArrayList<>();
+	ArrayList<PicUrlBean> picUrlList = new ArrayList<>();
 
         for(int i=0;i<UrlData.getSmallList().size();i++){
             PicUrlBean picUrlBean = new PicUrlBean();
