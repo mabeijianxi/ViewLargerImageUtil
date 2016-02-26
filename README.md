@@ -46,11 +46,13 @@ private void initImageLoader(Context context) {
             ImageLoader.getInstance().init(config.build());
         }```
 
+
 ###Step-4
 
 ######在合适的地方使用，可参照simple
 
 你只需要封装一个包含大图url与小图url即可：
+
  ```java
 ArrayList<PicUrlBean> picUrlList = new ArrayList<>();
 
@@ -59,7 +61,8 @@ ArrayList<PicUrlBean> picUrlList = new ArrayList<>();
             picUrlBean.imageBigUrl=UrlData.getBigUrlList().get(i);
             picUrlBean.smallImageUrl=UrlData.getSmallList().get(i);
             picUrlList.add(picUrlBean);
-        }```
+        }
+```
 然后直接跳转就完成了：
 
 ```java
