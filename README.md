@@ -49,7 +49,7 @@ private void initImageLoader(Context context) {
 ```
 ###Step-4
 
-######在合适的地方使用，可参照simple
+######在合适的地方使用，可参照samples
 
 你只需要封装一个包含大图url与小图url即可：
  ```java
