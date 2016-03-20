@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             picUrlList.add(picUrlBean);
         }
 
-        LookBigPicUtil.lookBigPic(MainActivity.this,view,picUrlList,position,4,4,3);
+        LookBigPicUtil.lookBigPic(MainActivity.this,view,picUrlList,position,4,4,3,true);
     }
 
     class JianXiAdapter extends BaseAdapter{
