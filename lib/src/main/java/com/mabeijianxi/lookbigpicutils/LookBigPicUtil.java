@@ -40,7 +40,7 @@ public class LookBigPicUtil {
         int xn = currentItem % maxRow + 1;
         int yn = currentItem / maxRow + 1;
         int h = (xn - 1) * CommonUtils.dip2px(context, horizontalPadding);
-        int v = (xn - 1) * CommonUtils.dip2px(context, verticalPadding);
+        int v = (yn - 1) * CommonUtils.dip2px(context, verticalPadding);
         int height = image.getHeight();
         int width = image.getWidth();
         int[] points = new int[2];
@@ -56,8 +56,8 @@ public class LookBigPicUtil {
             picDataBean.width = width;
             picDataBean.height = height;
             if(isListPicShow) {
-                picDataBean.x = x0 + (i % maxRow) * (width + h);
-                picDataBean.y = y0 + (i / maxRow) * (height + v) - CommonUtils.getStatusBarHeight(image);
+                picDataBean.x = x0 + (i % maxRow) * (width + CommonUtils.dip2px(context, horizontalPadding));//依次为每张图赋值，其实就累加而已
+                picDataBean.y = y0 + (i / maxRow) * (height + CommonUtils.dip2px(context, verticalPadding)) - CommonUtils.getStatusBarHeight(image);
             }
             else{
                 picDataBean.x = x0;

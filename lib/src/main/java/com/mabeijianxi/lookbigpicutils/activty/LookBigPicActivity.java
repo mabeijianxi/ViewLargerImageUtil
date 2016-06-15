@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
@@ -107,9 +108,9 @@ public class LookBigPicActivity extends Activity implements View.OnClickListener
 
         computeImageWidthAndHeight(imageView);
 
-        final PicDataBean ealuationPicBean = picDataList.get(mPositon);
-        final float vx = ealuationPicBean.width * 1.0f / width;
-        final float vy = ealuationPicBean.height * 1.0f / height;
+        final PicDataBean picBean = picDataList.get(mPositon);
+        final float vx = picBean.width * 1.0f / width;
+        final float vy = picBean.height * 1.0f / height;
 
         final ValueAnimator valueAnimator = ValueAnimator.ofFloat(0, 1.0f);
         valueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
@@ -118,8 +119,8 @@ public class LookBigPicActivity extends Activity implements View.OnClickListener
 
                 float animatedFraction = animation.getAnimatedFraction();
 
-                view.setTranslationX(EvaluateUtil.evaluateInt(animatedFraction, ealuationPicBean.x + ealuationPicBean.width / 2 - imageView.getWidth() / 2, 0));
-                view.setTranslationY(EvaluateUtil.evaluateInt(animatedFraction, ealuationPicBean.y + ealuationPicBean.height / 2 - imageView.getHeight() / 2, 0));
+                view.setTranslationX(EvaluateUtil.evaluateInt(animatedFraction, picBean.x + picBean.width / 2 - imageView.getWidth() / 2, 0));
+                view.setTranslationY(EvaluateUtil.evaluateInt(animatedFraction, picBean.y + picBean.height / 2 - imageView.getHeight() / 2, 0));
                 view.setScaleX(EvaluateUtil.evaluateFloat(animatedFraction, vx, 1));
                 view.setScaleY(EvaluateUtil.evaluateFloat(animatedFraction, vy, 1));
 
@@ -321,7 +322,9 @@ public class LookBigPicActivity extends Activity implements View.OnClickListener
 //      获取真实大小
         Drawable drawable = imageView.getDrawable();
         int intrinsicHeight = drawable.getIntrinsicHeight();
+        Log.e("drawable","intrinsicHeight:"+intrinsicHeight);
         int intrinsicWidth = drawable.getIntrinsicWidth();
+        Log.e("drawable","intrinsicWidth:"+intrinsicWidth);
 //        计算出与屏幕的比例，用于比较以宽的比例为准还是高的比例为准，因为很多时候不是高度没充满，就是宽度没充满
         float h = CommonUtils.getScreenSizeHeight(this) * 1.0f / intrinsicHeight;
         float w = CommonUtils.getScreenSizeWidth(this) * 1.0f / intrinsicWidth;

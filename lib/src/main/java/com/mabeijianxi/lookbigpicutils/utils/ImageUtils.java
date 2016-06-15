@@ -18,10 +18,10 @@ public class ImageUtils {
      *
      * @return
      */
-    public static Bitmap getBitmapFromCache(String uri,ImageLoader imageLoader){//这里的uri一般就是图片网址
+    public static Bitmap getBitmapFromCache(String uri, ImageLoader imageLoader) {//这里的uri一般就是图片网址
         List<String> memCacheKeyNameList = MemoryCacheUtils.findCacheKeysForImageUri(uri, imageLoader.getMemoryCache());
-        if(memCacheKeyNameList != null && memCacheKeyNameList.size() > 0){
-            for(String each:memCacheKeyNameList){
+        if (memCacheKeyNameList != null && memCacheKeyNameList.size() > 0) {
+            for (String each : memCacheKeyNameList) {
             }
             return imageLoader.getMemoryCache().get(memCacheKeyNameList.get(0));
         }
