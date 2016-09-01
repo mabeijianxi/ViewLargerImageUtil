@@ -7,7 +7,33 @@ import android.support.v4.view.PagerAdapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
 
+import com.mabeijianxi.viewlargerimage.R;
+import com.mabeijianxi.viewlargerimage.activty.LookBigPicActivity;
+import com.mabeijianxi.viewlargerimage.bean.PicDataBean;
+import com.mabeijianxi.viewlargerimage.photoview.PhotoView;
+import com.mabeijianxi.viewlargerimage.photoview.PhotoViewAttacher;
+import com.mabeijianxi.viewlargerimage.utils.CommonUtils;
+import com.mabeijianxi.viewlargerimage.utils.ImageUtils;
+import com.mabeijianxi.viewlargerimage.view.SendDongTaiDialog;
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.assist.FailReason;
+import com.nostra13.universalimageloader.core.assist.ImageScaleType;
+import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
+
+import java.util.List;
+
+
+/**
+ * Created by mabeijianxi on 2015/1/5.
+ */
+public class ImageScaleAdapter extends PagerAdapter implements PhotoViewAttacher.OnPhotoTapListener {
+    private ImageLoader mImageLoader = ImageLoader.getInstance();
+    private SendDongTaiDialog sendDongTaiDialog;
+    private List<PicDataBean> mPicData;
     private View mCurrentView;
     private Context mContext;
     private DisplayImageOptions pager_options = new DisplayImageOptions.Builder()
@@ -58,11 +84,14 @@ import android.view.ViewGroup;
     public Object instantiateItem(ViewGroup container, int position) {
 
         View inflate = LayoutInflater.from(mContext).inflate(R.layout.item_photoview, container, false);
+        PhotoView  imageView = (PhotoView) inflate.findViewById(R.id.pv);
         imageView.setOnPhotoTapListener(this);
         final ProgressBar pb = (ProgressBar) inflate.findViewById(R.id.pb);
         final PicDataBean mPicDataBean = mPicData.get(position);
 
         if (mPicDataBean != null && mPicDataBean.imageBigUrl != null && !"null".equals(mPicDataBean.imageBigUrl)) {
+            setupNetImage(pb, mPicDataBean,imageView);
+            savaPic(mPicDataBean,imageView);
         } else {
             imageView.setImageResource(R.drawable.home_youpin);
         }
@@ -71,6 +100,7 @@ import android.view.ViewGroup;
         return inflate;
     }
 
+    private void savaPic(final PicDataBean ealuationPicBean,ImageView imageView) {
 
         imageView.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
@@ -97,7 +127,11 @@ import android.view.ViewGroup;
 
     /**
      * 设置网络图片加载规则
+     *  @param pb
+     * @param ealuationPicBean
+     * @param imageView
      */
+    private void setupNetImage(final ProgressBar pb, final PicDataBean ealuationPicBean, final PhotoView imageView) {
         mImageLoader.displayImage(ealuationPicBean.imageBigUrl, imageView, pager_options, new ImageLoadingListener() {
             @Override
             public void onLoadingStarted(String imageUri, View view) {
