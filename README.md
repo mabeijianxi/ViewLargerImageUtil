@@ -1,4 +1,4 @@
-# LookBigPicUtils
+# ViewLargerImageUtil
 
 ##大图查看器
 ####一个查看大图的库，只需要几行代码就可以实现。先看效果图
