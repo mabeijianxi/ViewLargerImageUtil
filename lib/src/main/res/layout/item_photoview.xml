@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     >
-    <com.mabeijianxi.lookbigpicutils.photoview.PhotoView
+    <com.mabeijianxi.viewlargerimage.photoview.PhotoView
         android:id="@+id/pv"
         android:layout_height="match_parent"
         android:layout_width="match_parent"/>

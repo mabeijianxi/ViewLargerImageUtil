@@ -11,9 +11,9 @@ import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
 
-import com.mabeijianxi.lookbigpicutils.LookBigPicUtil;
-import com.mabeijianxi.lookbigpicutils.bean.PicUrlBean;
-import com.mabeijianxi.lookbigpicutils.utils.CommonUtils;
+import com.mabeijianxi.viewlargerimage.ViewLargerImageUtil;
+import com.mabeijianxi.viewlargerimage.bean.PicUrlBean;
+import com.mabeijianxi.viewlargerimage.utils.CommonUtils;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             picUrlList.add(picUrlBean);
         }
 
-        LookBigPicUtil.lookBigPic(MainActivity.this,view,picUrlList,position,4,4,3,true);
+        ViewLargerImageUtil.lookBigPic(MainActivity.this,view,picUrlList,position,4,4,3,true);
     }
 
     class JianXiAdapter extends BaseAdapter{

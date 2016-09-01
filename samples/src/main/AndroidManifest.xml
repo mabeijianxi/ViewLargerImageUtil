@@ -21,7 +21,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.mabeijianxi.lookbigpicutils.activty.LookBigPicActivity"
+            android:name="com.mabeijianxi.viewlargerimage.activty.LookBigPicActivity"
             android:theme="@android:style/Theme.Translucent.NoTitleBar"
             android:launchMode="singleTop" />
     </application>
