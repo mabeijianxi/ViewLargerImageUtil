@@ -65,7 +65,7 @@ private void initImageLoader(Context context) {
 然后直接跳转就完成了：
 
 ```java
-        LookBigPicUtil.lookBigPic(MainActivity.this,view,picUrlList,position,4,4,3);
+        ViewLargerImageUtil.lookBigPic(MainActivity.this,view,picUrlList,position,4,4,3,true);
 ```
 ###原理：
 ######查看大图是实际开发中比较常见的，假设你是查看的一组的中的一张，如果要实现上面的效果首先你需要指定你查看的是第几张，并且你需要知道这张图的大小和坐标，并且你需要计算出这张图所在的组图里面所有的位置坐标，这样后续的动画才有办法进行。下面将一步一步分析。
